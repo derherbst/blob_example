@@ -1,5 +1,13 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  margin: 0 auto;
+  padding-top: 100px;
+  flex: 0 1 auto;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
 }
 
 #clickMe {
@@ -15,4 +23,15 @@
 #clickMe:hover {
   background-color: wheat;
   color: olivedrab;
+}
+
+.spinnerBox {
+  margin: 0 auto;
+}
+
+.errorStatus,
+.errorStatusText {
+  font-weight: 600;
+  font-size: 20px;
+  color: red;
 }

@@ -5,8 +5,12 @@ import Spinner from './Spinner';
 
 const Component = () => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const callsLength = 4;
   
   const handleLinkClick = () => {
+
+    setError(null);
     setLoading(true);
     axios.get("/api/file", {
       headers: {
@@ -21,17 +25,30 @@ const Component = () => {
       const objectUrl = window.URL.createObjectURL(blob);
       setTimeout(() => {
         window.open(objectUrl)
-      }, 2000);
+      }, 1000);
       
     })
-    .catch((error) => { alert(error) })
+    .catch((error) => {
+      console.dir(error)
+      setLoading(false);
+      setError(error);
+    })
+    
   }
  
   return (
     <div className="App">
       <a id='clickMe' onClick={handleLinkClick}>Click Me!</a>
       {
-        loading && <Spinner />
+        loading && <div className='spinnerBox'><Spinner /></div>
+      }
+      {
+        error && (
+          <>
+            <div className='errorStatus'>{error.response.status}</div>
+            <div className='errorStatusText'>{error.response.statusText}</div>
+          </>
+        )
       }
     </div>
   );

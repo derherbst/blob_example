@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+#clickMe {
+  display: inline-block;
+  background-color: olivedrab;
+  color: wheat;
+  padding: 10px 20px;
+  border: 1px colid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#clickMe:hover {
+  background-color: wheat;
+  color: olivedrab;
+}

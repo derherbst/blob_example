@@ -9,9 +9,13 @@ let pingCount = 0;
 app.get('/api/file', (req, res) => {
     pingCount++;
     if (pingCount%2 === 0) {
-        res.sendFile('189838.pdf', {root : __dirname})
+        setTimeout(() => {
+            res.sendFile('189838.pdf', {root : __dirname})
+        }, 2000);
     } else {
-        res.status(500).send('Internal error');
+        setTimeout(() => {
+            res.status(503).send('Service Unavailable');
+        }, 2000);
     }
     
 });
